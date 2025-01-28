@@ -1,0 +1,33 @@
+{
+  "name": "frontend_reactjs",
+  "version": "1.0.0",
+  "description": "learning reactjs",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BackendLovesMe/frontend_ReactJs.git"
+  },
+  "keywords": [
+    "reactjs"
+  ],
+  "author": "Akshat Mishra",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BackendLovesMe/frontend_ReactJs/issues"
+  },
+  "homepage": "https://github.com/BackendLovesMe/frontend_ReactJs#readme",
+  "devDependencies": {
+    "parcel": "^2.13.3",
+    "process": "^0.11.10"
+  },
+  "dependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },"browserslist":[
+    "last 2 version "
+  ]
+
+  
+}
