@@ -1,22 +1,41 @@
+import { Link } from "react-router-dom";
 import { LOGO_URL } from "../Utils/constants";
-const Header = () =>{
-    return (
-        <div className='header'>
-            <div className='logo-container' >
-           <img className='logo' src={LOGO_URL}  />
+import { useState } from "react";
 
-            </div>
-            <div className='nav-items'>
-                <ul>
-                    <li>Home</li>
-                    <li>About Us</li>
-                    <li>Contact Us</li>
-                    <li>Cart</li>
-                    </ul> 
-                
-            </div>
-        </div>
-    )
+const Header = () => {
+  // ✅ Correct way to use useState
+  let [btnNamereact, setBtnNamereact] = useState("Login");
+
+  return (
+    <div className="header">
+      <div className="logo-container">
+        <img className="logo" src={LOGO_URL} />
+      </div>
+      <div className="nav-items">
+        <ul>
+          <li><Link to ={'/'}> Home </Link></li>
+          <li>
+            <Link to={'/About'}> About Us </Link>
+          </li>
+          <li>
+            <Link to ={'/Contact'}>Contact Us</Link>
+            </li>
+          <li>Cart</li>
+          {/* ✅ Use function correctly */}
+          <button
+            className="login"
+            onClick={() => {
+              btnNamereact === "Login"
+                ? setBtnNamereact("Logout")
+                : setBtnNamereact("Login");
+            }}
+          >
+            {btnNamereact}
+          </button>
+        </ul>
+      </div>
+    </div>
+  );
 };
-export default Header
-   
+
+export default Header;
