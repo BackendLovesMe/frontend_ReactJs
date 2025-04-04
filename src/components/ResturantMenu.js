@@ -1,69 +1,53 @@
 import { useEffect, useState } from "react";
 import Shimmer from "./shimmer";
 import { useParams } from "react-router-dom";
-import {MENU_API_URL} from '../Utils/constants'
-
+import { MENU_API_URL } from "../Utils/constants";
+import useResturantMenu from "../Utils/useResturantMenu";
+import RestaurantCategory from "./RestaurantCategory";
 
 const ResturnatMenu = () => {
-  const [resInfo, setResInfo] = useState();
-  const {resId}=useParams();// hook use to get params like id and all 
-  console.log("✅",(MENU_API_URL+resId))
-
-  useEffect(() => {
-    fetchMenu();
-  }, []);
-   
-  const fetchMenu = async () => {
-    try {
-      const response = await fetch(
-        (MENU_API_URL+resId),
-        {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJudW1iZXIiOiI3OTg1MjAxMjE4IiwiaWF0IjoxNzQwNjM5MjA4LCJleHAiOjE3NDMyMzEyMDh9.Ehq-8OJfZwI3TcSyt4WbWhps_fDf9IAuD5lclHyHMY4`, // Assuming token is stored in localStorage
-          },
-        }
-      );
-
-      if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
-      }
-
-      const data = await response.json();
-
-      console.log("Fetched Data:", data?.data);
-      setResInfo(data?.data);
-
-      console.log("State Vairiable ", resInfo);
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    }
-  };
+  //const [resInfo, setResInfo] = useState();
+  const { resId } = useParams(); // hook use to get params like id and all
+  const resInfo = useResturantMenu(resId);
+  console.log("✅ The console from resturantu Menu fecthing ", resInfo, resId);
   if (resInfo === null || resInfo === undefined) return <Shimmer></Shimmer>;
   const menuData = resInfo;
+  const categories = menuData.menu.filter(
+    (c) =>
+      c["_type"] ===
+      "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
+  );
+  const categoryMap = new Map();
+  categories.forEach((item) => {
+    if (!categoryMap.has(item.title)) {
+      categoryMap.set(item.title, []); // Create a new array for the category
+    }
+    categoryMap.get(item.title).push(item); // Push items into the corresponding category
+  });
+  const groupedCategories = Array.from(categoryMap.entries()).map(
+    ([title, items]) => ({
+      title, // Unique category title
+      items, // List of all menu items under this category
+    })
+  );
 
+  //console.log("menu Category ",categories);
+  //console.log("this is my menu data ",menuData.menu)
   return (
-    <div className="menu">
-      <h1>{menuData?.name}</h1>
-      <br></br>
+    <div className="menu text-center m-10  bg-gray-200 min-h-screen bg-[url('./subtle-stripes.svg')] bg-repeat ">
+      <h1 className="Resturant name  font-bold text-2xl">{menuData?.name}</h1>
+      <br />
 
-      <h2>Menu</h2>
+      <h2 className="font-bold text-lg italic">Menu</h2>
       <ul>
-        <li>Average Rating:{menuData?.avgRating}</li>
-        <li>Cost for Two:{menuData?.costForTwo}</li>
-        <li>
-          {menuData?.menu?.map((item) => (
-            <li key={item._id}>
-              <li>Category:{item.category}</li>
-              <li>Name:{item.name}</li>
-              <li>Description:{item.description}</li>
-              <li>Price: ₹{item.price}</li>
-              <li>{item.image}</li>
-            </li>
-          ))}
-        </li>
+        <li>Average Rating: {menuData?.avgRating}</li>
+        <li>Cost for Two: {menuData?.costForTwo}</li>
       </ul>
+      {/*Categories Accordian */}
+
+      {groupedCategories.map((category, index) => (
+        <RestaurantCategory key={index} data={category}></RestaurantCategory>
+      ))}
     </div>
   );
 };

@@ -19,10 +19,15 @@
   "bugs": {
     "url": "https://github.com/BackendLovesMe/frontend_ReactJs/issues"
   },
+
   "homepage": "https://github.com/BackendLovesMe/frontend_ReactJs#readme",
   "devDependencies": {
-    "parcel": "^2.13.3",
-    "process": "^0.11.10"
+    "@tailwindcss/postcss": "^4.0.15",
+    "autoprefixer": "^10.4.21",
+    "parcel": "^2.14.2",
+    "postcss": "^8.5.3",
+    "process": "^0.11.10",
+    "tailwindcss": "^4.0.15"
   },
   "dependencies": {
     "install": "^0.13.0",

@@ -1,13 +1,14 @@
-import ResuturantCard from "./ResturantCard";
-import { useState, useEffect, use } from "react";
+import ResuturantCard, { withPromotedLabel } from "./ResturantCard";
+import { useState, useEffect } from "react";
 import Shimmer from "./shimmer";
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../Utils/useOnlineStatus";
 
 const Body = () => {
   const [resList, setResList] = useState([]);
   const [filteredResturant, setFilteredResturant] = useState([]);
   const [SearchText, setSearchText] = useState(""); //state varibale
-
+  const PromotedResutrants = withPromotedLabel(ResuturantCard);
   useEffect(() => {
     fetchData();
   }, []);
@@ -19,7 +20,7 @@ const Body = () => {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJudW1iZXIiOiI3OTg1MjAxMjE4IiwiaWF0IjoxNzQwNjM5MjA4LCJleHAiOjE3NDMyMzEyMDh9.Ehq-8OJfZwI3TcSyt4WbWhps_fDf9IAuD5lclHyHMY4`, // Assuming token is stored in localStorage
+            Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJudW1iZXIiOiI3OTg1MjAxMjE4IiwiaWF0IjoxNzQxNDIyNjUxLCJleHAiOjE3NDQwMTQ2NTF9.-cpouPH5feJqEf18yrng1iNRY5CibYsSfoM0jtf5VMk`, // Assuming token is stored in localStorage
           },
         }
       );
@@ -30,7 +31,7 @@ const Body = () => {
 
       const data = await response.json();
       setResList(data.data);
-      setFilteredResturant(data.data)
+      setFilteredResturant(data.data);
       console.log("Fetched Data:", data.data);
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -39,21 +40,27 @@ const Body = () => {
   //   if(resList.length ===0){
   //     return  <Shimmer />
   //   }
+  //checking and sending shimmer ui if something went wrong
+  const onlineStatus = useOnlineStatus();
+  console.log(onlineStatus);
+  if (onlineStatus == false)
+    return <h1>Looks like you are offline check your internet</h1>;
   return resList.length === 0 ? (
     <Shimmer />
   ) : (
-    <div className="body">
-      <div className="filter">
-        <div className="Search">
+    <div className="body bg-gray-200 min-h-screen bg-[url('./subtle-stripes.svg')] bg-repeat ">
+      <div className="filter flex items-center justify-center mt-4">
+        <div className="Search m-4 p-4 ">
           <input
             type="text"
-            className="search-box"
+            className="search-box px-2 py-1 border border-black rounded-md focus:outline-none focus:border-blue-500"
             value={SearchText}
             onChange={(e) => {
               setSearchText(e.target.value);
             }}
           ></input>
           <button
+            className="bg-blue-500 text-white px-3 py-2 rounded ml-2 mt-7  h-10"
             onClick={() => {
               const fiteredList = resList.filter((res) =>
                 res.name.toLowerCase().includes(SearchText.toLocaleLowerCase())
@@ -67,7 +74,7 @@ const Body = () => {
           </button>
         </div>
         <button
-          className="filter-btn"
+          className="filter-btn bg-blue-500 text-white px-4 py-0.5 rounded-md ml-0.5 h-9 mt-7 "
           onClick={() => {
             // filter most reated
             const filteredList = resList.filter((res) => {
@@ -80,7 +87,7 @@ const Body = () => {
         </button>
       </div>
 
-      <div className="res-container">
+      <div className="res-container text-center grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 p-6 max-w-7xl mx-auto">
         {/* <ResuturantCard resData={resObj.restaurants[0].info} ></ResuturantCard>
                 <ResuturantCard resData={resObj.restaurants[1].info} ></ResuturantCard>
                 <ResuturantCard resData={resObj.restaurants[2].info} ></ResuturantCard>
@@ -93,13 +100,16 @@ const Body = () => {
                 <ResuturantCard resData={resObj.restaurants[9].info} ></ResuturantCard> */}
         {
           filteredResturant.map((resturant) => (
-           
-            <Link key={resturant.id} to={'/resturants/'+resturant._id}>
-            <ResuturantCard
-              
-              resData={resturant}
-            ></ResuturantCard>
+          
+            <Link key={resturant._id} to={"/resturants/" + resturant._id}>
+             
+              {resturant['promoted'] ? (
+                <PromotedResutrants resData={resturant} />
+              ) : (
+                <ResuturantCard resData={resturant} />
+              )}
             </Link>
+           
           )) //component must uniquely represent to indetify react with this id
         }
       </div>
