@@ -1,8 +1,7 @@
 export const CDN_URL="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/"
  export const LOGO_URL="https://cdn.pixabay.com/photo/2022/08/30/18/14/food-7421671_1280.png"
-
-
-
+export const cartUrl="https://cdn-icons-png.freepik.com/512/7835/7835563.png"
+export const aboutUsUrl="https://img.freepik.com/premium-vector/food-delivery-online-mobile-phone-shopping-online-online-food-order-internet-ecommerce-concept-website-banner-3d-perspective-vector-illustration_473922-160.jpg?w=1480"
 // export const resList= [
 //     {
 //         "info": {

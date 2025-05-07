@@ -15,7 +15,7 @@ const useResturantMenu =(resId)=>{//custom hook
              method: "GET",
              headers: {
                "Content-Type": "application/json",
-               Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJudW1iZXIiOiI3OTg1MjAxMjE4IiwiaWF0IjoxNzQxNDIyNjUxLCJleHAiOjE3NDQwMTQ2NTF9.-cpouPH5feJqEf18yrng1iNRY5CibYsSfoM0jtf5VMk`, // Assuming token is stored in localStorage
+               Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJudW1iZXIiOiI3OTg1MjAxMjE4IiwiaWF0IjoxNzQ0MDE2ODI0LCJleHAiOjE3NDY2MDg4MjR9.SjSPKQqfivAZDSY1nB78nbj5XZ3qyAAEObKUnx3WByM`, // Assuming token is stored in localStorage
              },
            }
          );

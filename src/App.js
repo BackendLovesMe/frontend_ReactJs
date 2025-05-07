@@ -5,20 +5,24 @@ import { jsx } from "react/jsx-runtime";
 import Header from "./components/Header";
 import Body from "./components/Body";
 import About from "./components/About";
-
 import Contact from "./components/Contact";
 import Error from "./components/Error";
 import ResturnatMenu from "./components/ResturantMenu";
+import { Provider } from "react-redux";
+import appStore from "./Utils/AppStore";
+import Cart from "./components/Cart";
 
 const Grocery=lazy(()=>
   import('./components/Grocery'));
 const AppLayout = () => {
   return (
+    <Provider store={appStore}>
     <div className="app">
       <Header></Header>
       <Outlet></Outlet>
     
     </div>
+    </Provider>
   );
 };
 
@@ -51,6 +55,10 @@ const appRouter = createBrowserRouter([
       element:(<Suspense fallback={<h1>Loading bro ...</h1>}><Grocery/></Suspense>) 
      
     },
+    {
+      path: "/cart",
+      element: <Cart />,
+    }
   ],
     errorElement:<Error></Error>
   },

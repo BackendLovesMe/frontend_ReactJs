@@ -20,7 +20,7 @@ const Body = () => {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJudW1iZXIiOiI3OTg1MjAxMjE4IiwiaWF0IjoxNzQxNDIyNjUxLCJleHAiOjE3NDQwMTQ2NTF9.-cpouPH5feJqEf18yrng1iNRY5CibYsSfoM0jtf5VMk`, // Assuming token is stored in localStorage
+            Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJudW1iZXIiOiI3OTg1MjAxMjE4IiwiaWF0IjoxNzQ0MDE2ODI0LCJleHAiOjE3NDY2MDg4MjR9.SjSPKQqfivAZDSY1nB78nbj5XZ3qyAAEObKUnx3WByM`, // Assuming token is stored in localStorage
           },
         }
       );
@@ -48,7 +48,7 @@ const Body = () => {
   return resList.length === 0 ? (
     <Shimmer />
   ) : (
-    <div className="body bg-gray-200 min-h-screen bg-[url('./subtle-stripes.svg')] bg-repeat ">
+    <div className="body bg-gray-200 min-h-screen bg-[url('src/assets/subtle-stripes.svg')] bg-repeat ">
       <div className="filter flex items-center justify-center mt-4">
         <div className="Search m-4 p-4 ">
           <input
@@ -60,7 +60,7 @@ const Body = () => {
             }}
           ></input>
           <button
-            className="bg-blue-500 text-white px-3 py-2 rounded ml-2 mt-7  h-10"
+            className="bg-yellow-600 text-white px-3 py-2 rounded ml-2 mt-7  h-10"
             onClick={() => {
               const fiteredList = resList.filter((res) =>
                 res.name.toLowerCase().includes(SearchText.toLocaleLowerCase())
@@ -74,7 +74,7 @@ const Body = () => {
           </button>
         </div>
         <button
-          className="filter-btn bg-blue-500 text-white px-4 py-0.5 rounded-md ml-0.5 h-9 mt-7 "
+          className="filter-btn bg-yellow-600 text-white px-4 py-0.5 rounded-md ml-0.5 h-9 mt-7 "
           onClick={() => {
             // filter most reated
             const filteredList = resList.filter((res) => {

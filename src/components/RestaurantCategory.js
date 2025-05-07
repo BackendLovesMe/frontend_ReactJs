@@ -1,10 +1,10 @@
 import { useState } from "react";
 import ItemList from "./ItemList";
 
-const RestaurantCategory = ({ data }) => {
-  const [showItem, setShowItem] = useState(false);
+const RestaurantCategory = ({ data,showItems,setshowIndex }) => {
+  // const [showItem, setShowItem] = useState(false);
   const handleClick = () => {// login to create accordian hide and show
-    setShowItem(!showItem)
+    setshowIndex();
   };
 
   //console.log("See this is the props Data iam getting", data.items);
@@ -21,7 +21,7 @@ const RestaurantCategory = ({ data }) => {
           </span>
           <span>⬇️</span>
         </div>
-        {showItem && <ItemList item={data.items}></ItemList>}
+        {showItems && <ItemList item={data.items}></ItemList>}
       </div>
       {/* Accordian body */}
       {/* <ItemList>categor</ItemList> */}

@@ -1,4 +1,0 @@
-steup : first install python 
-then install utlralytics:pip install --trusted-host pypi.org --trusted-host pypi.python.org --trusted-host files.pythonhosted.org ultralytics //temporary fix
-create Environment:= python -m venv env_name
-

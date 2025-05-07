@@ -21,3 +21,20 @@ react class lifecycle :https://projects.wojtekmaj.pl/react-lifecycle-methods-dia
 
 chunking or splitting code or lazy loading or bundling means to divide app done with trhe help of loading data with help of lazy and suspense given by react 
 why we nedd suspense : to handle the time when the other componnet is loading and react tries to render (error:react suspended componet) 
+
+#Testing
+-unit testing- like testing a small portion in isolation 
+-Integration Testing- testing the intergartion onf diff component 
+-end to end (e2e)
+
+- test setup=
+react testing lib 
+then installed jest 
+then i installed babel dependecy
+then configure babel.config.js
+configure parcel.config file to disable deafult bable transportation
+jest -npx jest --init 
+install jsdom lib
+install @babel/preset-react-to make jsx work on test cases
+include @babel/preset-react inside my babel config 
+install npm i -D @testing-library/jest-dom

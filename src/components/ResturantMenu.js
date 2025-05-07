@@ -7,6 +7,7 @@ import RestaurantCategory from "./RestaurantCategory";
 
 const ResturnatMenu = () => {
   //const [resInfo, setResInfo] = useState();
+  const [showIndex,setshowIndex]=useState(0)
   const { resId } = useParams(); // hook use to get params like id and all
   const resInfo = useResturantMenu(resId);
   console.log("✅ The console from resturantu Menu fecthing ", resInfo, resId);
@@ -34,7 +35,7 @@ const ResturnatMenu = () => {
   //console.log("menu Category ",categories);
   //console.log("this is my menu data ",menuData.menu)
   return (
-    <div className="menu text-center m-10  bg-gray-200 min-h-screen bg-[url('./subtle-stripes.svg')] bg-repeat ">
+    <div className="menu text-center m-10  bg-gray-200 min-h-screen bg-[url('src/assets/subtle-stripes.svg')] bg-repeat ">
       <h1 className="Resturant name  font-bold text-2xl">{menuData?.name}</h1>
       <br />
 
@@ -46,7 +47,8 @@ const ResturnatMenu = () => {
       {/*Categories Accordian */}
 
       {groupedCategories.map((category, index) => (
-        <RestaurantCategory key={index} data={category}></RestaurantCategory>
+        //constrolled componenet
+        <RestaurantCategory key={index} data={category} showItems={index === showIndex ? true :false} setshowIndex={()=>{setshowIndex(index)}}></RestaurantCategory>
       ))}
     </div>
   );
