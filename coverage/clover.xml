@@ -1,11 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1746522155380" clover="3.2.0">
-  <project timestamp="1746522155380" name="All files">
-    <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1" elements="3" coveredelements="3" complexity="0" loc="2" ncloc="2" packages="1" files="1" classes="1"/>
-    <file name="Contact.js" path="C:\POCs\ReactJs\src\components\Contact.js">
-      <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-      <line num="3" count="1" type="stmt"/>
-      <line num="4" count="2" type="stmt"/>
-    </file>
+<coverage generated="1746605476906" clover="3.2.0">
+  <project timestamp="1746605476907" name="All files">
+    <metrics statements="34" coveredstatements="25" conditionals="6" coveredconditionals="2" methods="12" coveredmethods="5" elements="52" coveredelements="32" complexity="0" loc="34" ncloc="34" packages="2" files="7" classes="7"/>
+    <package name="Utils">
+      <metrics statements="23" coveredstatements="16" conditionals="0" coveredconditionals="0" methods="7" coveredmethods="2"/>
+      <file name="AppStore.js" path="C:\POCs\ReactJs\src\Utils\AppStore.js">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="4" count="1" type="stmt"/>
+      </file>
+      <file name="cartSlice.js" path="C:\POCs\ReactJs\src\Utils\cartSlice.js">
+        <metrics statements="6" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="0"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="9" count="0" type="stmt"/>
+        <line num="10" count="0" type="stmt"/>
+        <line num="13" count="0" type="stmt"/>
+        <line num="16" count="0" type="stmt"/>
+        <line num="21" count="1" type="stmt"/>
+      </file>
+      <file name="constants.js" path="C:\POCs\ReactJs\src\Utils\constants.js">
+        <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="1928" count="1" type="stmt"/>
+      </file>
+      <file name="useOnlineStatus.js" path="C:\POCs\ReactJs\src\Utils\useOnlineStatus.js">
+        <metrics statements="10" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="2"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="10" count="0" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="14" count="0" type="stmt"/>
+        <line num="15" count="0" type="stmt"/>
+        <line num="19" count="1" type="stmt"/>
+      </file>
+      <file name="userContext.js" path="C:\POCs\ReactJs\src\Utils\userContext.js">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="3" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="components">
+      <metrics statements="11" coveredstatements="9" conditionals="6" coveredconditionals="2" methods="5" coveredmethods="3"/>
+      <file name="Contact.js" path="C:\POCs\ReactJs\src\components\Contact.js">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="3" type="stmt"/>
+      </file>
+      <file name="Header.js" path="C:\POCs\ReactJs\src\components\Header.js">
+        <metrics statements="9" coveredstatements="7" conditionals="6" coveredconditionals="2" methods="4" coveredmethods="2"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="15" count="2" type="stmt"/>
+        <line num="17" count="1" type="stmt"/>
+        <line num="55" count="0" type="stmt"/>
+        <line num="56" count="0" type="cond" truecount="0" falsecount="2"/>
+      </file>
+    </package>
   </project>
 </coverage>
